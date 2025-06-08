@@ -127,7 +127,9 @@ Another design decision was applying Dependency Inversion, by defining interface
 I also centralized the entire OpenAPI documentation in an interface, mainly to apply the Single Responsibility Principle.
 This approach helps to keep the code standardized, easier to understand, and more maintainable.
 
+## 6. AI-assisted
 
-
+To help with faster development, AI assistance was used—specifically GitHub Copilot—to help create unit tests and generate descriptions for each class in order to maintain organization and standards.
+Copilot also helped us with some basic configurations, for example, from the docker-compose setup.
 
 
