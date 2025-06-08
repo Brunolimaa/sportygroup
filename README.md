@@ -37,6 +37,7 @@ Next, package the application:
 ```
 mvn clean package
 ```
+![Screenshot from 2025-06-08 19-28-21](https://github.com/user-attachments/assets/5d041795-452a-42e1-979a-6718ed7f99fd)
 
 ### To start the containers, run the following command:
 
