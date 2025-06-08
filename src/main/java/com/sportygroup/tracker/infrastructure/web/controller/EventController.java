@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * Controller for handling event status updates.
  * This controller provides an endpoint to update the status of an event.
  */
-@RestController("EventController")
+@RestController
 public class EventController implements EventControllerApi {
 
     private final EventStatusService eventStatusService;
