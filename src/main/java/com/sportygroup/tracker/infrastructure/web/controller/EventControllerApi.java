@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * API interface for handling event-related operations.
- * This interface defines the endpoints for updating event status.
+ * API interface for managing event-related operations.
+ * This interface defines the endpoints for updating the status of events.
  */
 @RequestMapping("/v1/events")
 public interface EventControllerApi {
@@ -23,5 +23,5 @@ public interface EventControllerApi {
             }
     )
     @PostMapping("/status")
-    ResponseEntity<Void> updateEventStatus(@RequestBody EventRequestDTO request);
+    ResponseEntity<Void> manageEventLifecycle(@RequestBody EventRequestDTO request);
 }

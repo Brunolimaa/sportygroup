@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Controller for handling event status updates.
- * This controller provides an endpoint to update the status of an event.
+ * Controller for managing event-related operations.
+ * This controller handles requests to update the status of events.
  */
 @RestController
 public class EventController implements EventControllerApi {
@@ -23,7 +23,7 @@ public class EventController implements EventControllerApi {
     }
 
     @Override
-    public ResponseEntity<Void> updateEventStatus(EventRequestDTO request) {
+    public ResponseEntity<Void> manageEventLifecycle(EventRequestDTO request) {
         eventStatusService.updateEventStatus(this.eventMapper.toDomain(request));
         return ResponseEntity.ok().build();
     }

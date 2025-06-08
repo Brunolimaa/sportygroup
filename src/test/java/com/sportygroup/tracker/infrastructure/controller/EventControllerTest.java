@@ -32,7 +32,7 @@ class EventControllerTest {
         Event event = new Event("event-1", EventStatus.LIVE.name());
         when(eventMapper.toDomain(request)).thenReturn(event);
 
-        ResponseEntity<Void> response = controller.updateEventStatus(request);
+        ResponseEntity<Void> response = controller.manageEventLifecycle(request);
 
         verify(eventMapper).toDomain(request);
         verify(eventStatusService).updateEventStatus(event);
