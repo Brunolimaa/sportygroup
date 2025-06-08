@@ -3,6 +3,7 @@ package com.sportygroup.tracker.application;
 import com.sportygroup.tracker.domain.model.Event;
 import com.sportygroup.tracker.domain.ports.in.EventSchedulerPort;
 import com.sportygroup.tracker.domain.ports.in.EventStatusUseCase;
+import com.sportygroup.tracker.infrastructure.web.controller.request.EventStatus;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,7 +21,7 @@ public class EventStatusService implements EventStatusUseCase {
 
     @Override
     public void updateEventStatus(Event event) {
-        if ("live".equalsIgnoreCase(event.status())) {
+        if (EventStatus.LIVE.name().equalsIgnoreCase(event.status())) {
             eventScheduler.startTracking(event.eventId());
         } else {
             eventScheduler.stopTracking(event.eventId());

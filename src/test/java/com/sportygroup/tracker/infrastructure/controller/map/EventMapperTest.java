@@ -4,6 +4,7 @@ import com.sportygroup.tracker.domain.model.Event;
 import com.sportygroup.tracker.domain.model.LiveSports;
 import com.sportygroup.tracker.infrastructure.web.controller.map.EventMapper;
 import com.sportygroup.tracker.infrastructure.web.controller.request.EventRequestDTO;
+import com.sportygroup.tracker.infrastructure.web.controller.request.EventStatus;
 import com.sportygroup.tracker.infrastructure.web.controller.response.EventResponseDTO;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -16,12 +17,12 @@ class EventMapperTest {
 
     @Test
     void toDomain_ShouldMapRequestToDomain() {
-        EventRequestDTO request = new EventRequestDTO("event-1", "Football Match");
+        EventRequestDTO request = new EventRequestDTO("event-1", EventStatus.NOT_LIVE);
         Event event = mapper.toDomain(request);
 
         assertNotNull(event);
         assertEquals(request.eventId(), event.eventId());
-        assertEquals(request.status(), event.status());
+        assertEquals(request.status().name(), event.status());
     }
 
     @Test

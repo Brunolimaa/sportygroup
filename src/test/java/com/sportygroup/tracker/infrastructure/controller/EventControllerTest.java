@@ -5,6 +5,7 @@ import com.sportygroup.tracker.domain.model.Event;
 import com.sportygroup.tracker.infrastructure.web.controller.EventController;
 import com.sportygroup.tracker.infrastructure.web.controller.map.EventMapper;
 import com.sportygroup.tracker.infrastructure.web.controller.request.EventRequestDTO;
+import com.sportygroup.tracker.infrastructure.web.controller.request.EventStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,8 @@ class EventControllerTest {
 
     @Test
     void updateEventStatus_ShouldDelegateToServiceAndReturnOk() {
-        EventRequestDTO request = new EventRequestDTO("event-1", "Football Match");
-        Event event = new Event("event-1", "Football Match");
+        EventRequestDTO request = new EventRequestDTO("event-1", EventStatus.LIVE);
+        Event event = new Event("event-1", EventStatus.LIVE.name());
         when(eventMapper.toDomain(request)).thenReturn(event);
 
         ResponseEntity<Void> response = controller.updateEventStatus(request);

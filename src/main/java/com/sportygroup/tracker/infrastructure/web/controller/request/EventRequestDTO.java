@@ -11,6 +11,9 @@ public record EventRequestDTO(
         @Schema(description = "Unique identifier of the event", example = "12345")
         String eventId,
 
-        @Schema(description = "Current status or score of the event", example = "2:1")
-        String status
+        @Schema(
+                description = "Current status of the event. Allowed values: LIVE (Event is currently live), NOT_LIVE (Event is not live or has ended).",
+                example = "LIVE"
+        )
+        EventStatus status
 ) {}

@@ -6,6 +6,7 @@ import com.sportygroup.tracker.domain.model.Event;
 import com.sportygroup.tracker.infrastructure.web.controller.EventController;
 import com.sportygroup.tracker.infrastructure.web.controller.map.EventMapper;
 import com.sportygroup.tracker.infrastructure.web.controller.request.EventRequestDTO;
+import com.sportygroup.tracker.infrastructure.web.controller.request.EventStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -47,7 +48,7 @@ class EventControllerIntegrationTest {
 
     @Test
     void updateEventStatus_ShouldReturnOk() throws Exception {
-        EventRequestDTO request = new EventRequestDTO("event-1", "live");
+        EventRequestDTO request = new EventRequestDTO("event-1", EventStatus.LIVE);
         Event event = new Event("event-1", "live");
         when(eventMapper.toDomain(org.mockito.ArgumentMatchers.any(EventRequestDTO.class))).thenReturn(event);
 
