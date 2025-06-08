@@ -21,7 +21,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_INTERNAL://kafka:29092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_INTERNAL://0.0.0.0:29092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
@@ -37,15 +37,38 @@ services:
     depends_on:
       - kafka
 
-#  tracker-app:
-#    image: openjdk:21
-#    container_name: tracker-app
-#    depends_on:
-#      - kafka
-#    volumes:
-#      - ./target/tracker-0.0.1-SNAPSHOT.jar:/app.jar
-#    command: ["java", "-jar", "/app.jar"]
+  tracker-app:
+    image: openjdk:21
+    container_name: tracker-app
+    depends_on:
+      - kafka
+    volumes:
+      - ./target/tracker-0.0.1-SNAPSHOT.jar:/app.jar
+    command: ["java", "-jar", "/app.jar"]
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+
+#  sonarqube:
+#    image: sonarqube:community
+#    container_name: sonarqube
 #    ports:
-#      - "8080:8080"
+#      - "9000:9000"
 #    environment:
-#      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+#      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+#      SONAR_JDBC_USERNAME: sonar
+#      SONAR_JDBC_PASSWORD: sonar
+#    depends_on:
+#      - db
+
+#  db:
+#    image: postgres:13
+#    container_name: sonardb
+#    environment:
+#      POSTGRES_USER: sonar
+#      POSTGRES_PASSWORD: sonar
+#      POSTGRES_DB: sonar
+#    ports:
+#      - "5432:5432"
+

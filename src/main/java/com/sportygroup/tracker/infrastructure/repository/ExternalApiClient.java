@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * Feign client for interacting with an external API to fetch event data.
  * This interface defines the endpoint to retrieve live event data.
  */
-@FeignClient(name = "external-api", url = "http://localhost:8085/v1/api")
+@FeignClient(name = "external-api", url = "${external.api.url}")
 public interface ExternalApiClient {
 
     @GetMapping("/live/{eventId}")

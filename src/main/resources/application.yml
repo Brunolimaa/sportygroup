@@ -1,10 +1,14 @@
 server:
-  port: 8085
+  port: 8080
 
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka:9092
 
 kafka:
   topic:
     name: sports-live-updates
+
+external:
+  api:
+    url: http://localhost:8080/v1/api
