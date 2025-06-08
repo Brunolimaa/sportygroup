@@ -111,8 +111,13 @@ To see the messages you can find them in these menus:
 
 It’s a simple project; however, I decided to use Clean Architecture as the architectural approach.
 By using this architecture, it’s possible to isolate the domain and application code, applying the Open/Closed Principle more easily.
-
 For this project, it would have been simpler, of course, to use an MVC architecture, but I chose Clean Architecture to better organize the layers and responsibilities.
+
+- According to this image, we can see how this architecture works 
+
+![image](https://github.com/user-attachments/assets/e540df2d-a39d-4103-9074-3e19ba0d5687)
+
+
 
 To handle centralized exceptions, we could use AOP (Aspect-Oriented Programming) through @ControllerAdvice or @ExceptionHandler.
 However, I did not apply it in this project because I believe the current approach meets the project's purpose.
@@ -122,7 +127,7 @@ Another design decision was applying Dependency Inversion, by defining interface
 I also centralized the entire OpenAPI documentation in an interface, mainly to apply the Single Responsibility Principle.
 This approach helps to keep the code standardized, easier to understand, and more maintainable.
 
-![image](https://github.com/user-attachments/assets/f240e66b-c2ea-4b05-99b2-659a432229e6)
+
 
 
 
