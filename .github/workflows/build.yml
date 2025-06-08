@@ -17,9 +17,9 @@ jobs:
           - 9000:9000
         options: >-
           --health-cmd="curl --fail http://localhost:9000/api/system/health | grep -q 'UP'"
-          --health-interval=20s
+          --health-interval=30s
           --health-timeout=10s
-          --health-retries=30
+          --health-retries=40
 
     steps:
       - uses: actions/checkout@v4
