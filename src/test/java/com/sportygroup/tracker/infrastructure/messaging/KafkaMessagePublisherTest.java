@@ -23,7 +23,7 @@ class KafkaMessagePublisherTest {
         kafkaTemplate = mock(KafkaTemplate.class);
         objectMapper = mock(ObjectMapper.class);
         publisher = new KafkaMessagePublisher(kafkaTemplate, objectMapper);
-        // Set the topic field via reflection since @Value is not processed in unit tests
+
         try {
             var field = KafkaMessagePublisher.class.getDeclaredField("topic");
             field.setAccessible(true);
@@ -35,8 +35,8 @@ class KafkaMessagePublisherTest {
 
     @Test
     void publish_ShouldSerializeAndSendMessage() throws Exception {
-        LiveSports liveSports = new LiveSports("event-1", "Football Match");
-        String json = "{\"eventId\":\"event-1\",\"name\":\"Football Match\"}";
+        LiveSports liveSports = new LiveSports("event-1", "2:1");
+        String json = "{\"eventId\":\"event-1\",\"name\":\"2:1\"}";
         when(objectMapper.writeValueAsString(liveSports)).thenReturn(json);
 
         CompletableFuture<SendResult<String, String>> future = new CompletableFuture<>();
@@ -51,12 +51,31 @@ class KafkaMessagePublisherTest {
 
     @Test
     void publish_ShouldLogErrorOnSerializationException() throws Exception {
-        LiveSports liveSports = new LiveSports("event-2", "Basketball Match");
+        LiveSports liveSports = new LiveSports("event-2", "2:1");
         when(objectMapper.writeValueAsString(liveSports)).thenThrow(new JsonProcessingException("error") {});
 
         publisher.publish(liveSports);
 
         verify(objectMapper).writeValueAsString(liveSports);
         verifyNoInteractions(kafkaTemplate);
+    }
+
+    @Test
+    void publish_ShouldLogErrorOnSendException() throws Exception {
+        LiveSports liveSports = new LiveSports("event-3", "2:2");
+        String json = "{\"eventId\":\"event-3\",\"name\":\"2:2\"}";
+        when(objectMapper.writeValueAsString(liveSports)).thenReturn(json);
+
+        CompletableFuture<SendResult<String, String>> future = new CompletableFuture<>();
+        when(kafkaTemplate.send(anyString(), anyString(), anyString()))
+                .thenReturn(future);
+
+        publisher.publish(liveSports);
+
+        Exception sendException = new RuntimeException("Kafka send failed");
+        future.completeExceptionally(sendException);
+
+        verify(objectMapper).writeValueAsString(liveSports);
+        verify(kafkaTemplate).send("test-topic", "event-3", json);
     }
 }

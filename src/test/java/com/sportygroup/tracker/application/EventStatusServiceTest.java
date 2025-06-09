@@ -28,7 +28,7 @@ class EventStatusServiceTest {
 
     @Test
     void shouldStopTrackingWhenEventIsNotLive() {
-        Event event = new Event("event-2", "finished");
+        Event event = new Event("event-2", "not_live");
         eventStatusService.updateEventStatus(event);
 
         Mockito.verify(eventScheduler).stopTracking("event-2");

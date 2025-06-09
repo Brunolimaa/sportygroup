@@ -24,7 +24,7 @@ class EventSchedulerServiceTest {
     @Test
     void startTracking_ShouldScheduleTaskAndPublish() throws Exception {
         String eventId = "event-1";
-        LiveSports liveSports = new LiveSports(eventId, "Football Match");
+        LiveSports liveSports = new LiveSports(eventId, "2:1");
         when(apiPort.fetchEventData(eventId)).thenReturn(liveSports);
 
         schedulerService.startTracking(eventId);

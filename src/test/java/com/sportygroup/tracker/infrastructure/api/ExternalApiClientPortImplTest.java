@@ -22,7 +22,7 @@ class ExternalApiClientPortImplTest {
     @Test
     void fetchEventData_ShouldDelegateToExternalApiClient() {
         String eventId = "event-123";
-        LiveSports expected = new LiveSports("eventId", ""); // Adjust constructor as needed
+        LiveSports expected = new LiveSports("eventId", "");
         Mockito.when(externalApiClient.fetchEventData(eventId)).thenReturn(expected);
 
         LiveSports result = externalApiClientPort.fetchEventData(eventId);
