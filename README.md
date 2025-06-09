@@ -1,11 +1,11 @@
 <img src="https://github.com/user-attachments/assets/cfcaeef7-6607-4dc3-b8ac-56383f12368e" height="50"/>
 
-This is a simple backend service built using Java 21, Spring Boot 3 and Kafka as a message broken.
+This is a simple backend service built using Java 21, Spring Boot 3 and Kafka as a message broker.
 
 
 - **Back-end**: The backend is built using Java 21.
 - **API**: The service is built using Spring Boot 3
-- **Message**: The message broken is built using kafka to publish messages to a topic
+- **Message**: The message broker is built using kafka to publish messages to a topic
 
 
 ## Requirements
