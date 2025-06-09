@@ -29,7 +29,8 @@ git checkout master
 
 or click in download button in the top right corner of this page to download the project as a zip file.
 
-![img.png](img.png)
+![image](https://github.com/user-attachments/assets/b27bac5d-4d9c-4f01-bca2-9653f8387739)
+
 
 
 #### 2. Docker Compose Setup
@@ -73,6 +74,9 @@ You can run the unit tests and integration tests using the following command:
 ```
     mvn clean test
 ```
+
+![Screenshot from 2025-06-09 14-51-14](https://github.com/user-attachments/assets/14288581-c159-4373-94b0-e0e4cfb2a35d)
+
 
 #### 3. Logs from API - through docker 
 
