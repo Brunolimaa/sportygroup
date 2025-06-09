@@ -38,13 +38,12 @@ services:
       - kafka
 
   tracker-app:
-    image: openjdk:21
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: tracker-app
     depends_on:
       - kafka
-    volumes:
-      - ./target/tracker-0.0.1-SNAPSHOT.jar:/app.jar
-    command: ["java", "-jar", "/app.jar"]
     ports:
       - "8080:8080"
     environment:

@@ -27,21 +27,16 @@ cd tracker
 git checkout master
 ```
 
+or click in download button in the top right corner of this page to download the project as a zip file.
 
-#### First, clean the project and compile the source code:
-```
-mvn clean install
-```
+![img.png](img.png)
 
-Next, package the application:
-```
-mvn clean package
-```
-![Screenshot from 2025-06-08 19-28-21](https://github.com/user-attachments/assets/5d041795-452a-42e1-979a-6718ed7f99fd)
-
-#### To start the containers, run the following command:
 
 #### 2. Docker Compose Setup
+
+The project was set up in dockerfile and docker-compose.yml, so you can run the project using Docker Compose.
+
+Doing this the MAVEN build will be executed automatically, and the application will be started in a container.
 
 ##### Start the Docker Containers
 
@@ -72,6 +67,12 @@ request body information
 
 ![image](https://github.com/user-attachments/assets/ddde87be-37fc-4c74-800e-1864c8b7048a)
 
+##### 2.1 Unit tests and Integration tests
+You can run the unit tests and integration tests using the following command:
+
+```
+    mvn clean test
+```
 
 #### 3. Logs from API - through docker 
 
