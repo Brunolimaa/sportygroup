@@ -133,6 +133,9 @@ Another design decision was applying Dependency Inversion, by defining interface
 I also centralized the entire OpenAPI documentation in an interface, mainly to apply the Single Responsibility Principle.
 This approach helps to keep the code standardized, easier to understand, and more maintainable.
 
+The retry logic was included along with a circuit breaker to maintain resilience against transient failures.
+
+
 ## AI-assisted
 
 To help with faster development, AI assistance was used—specifically GitHub Copilot—to create basic unit tests and generate descriptions for each class, helping to maintain organization and standards.
