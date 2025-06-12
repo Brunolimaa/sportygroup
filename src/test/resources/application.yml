@@ -1,10 +1,3 @@
-server:
-  port: 8080
-
-spring:
-  kafka:
-    bootstrap-servers: kafka:9092
-
 kafka:
   topic:
     name: sports-live-updates

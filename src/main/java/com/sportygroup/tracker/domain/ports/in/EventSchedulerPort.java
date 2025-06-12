@@ -7,4 +7,5 @@ package com.sportygroup.tracker.domain.ports.in;
 public interface EventSchedulerPort {
     void startTracking(String eventId);
     void stopTracking(String eventId);
+    void executeTaskLiveSports(String eventId);
 }
