@@ -24,7 +24,7 @@ public class ResilientApiCaller implements ExternalResilientApiCallerPort {
     }
 
     @Retry(name = "eventApiRetry")
-    @CircuitBreaker(name = "eventApi", fallbackMethod = "fallback")
+    @CircuitBreaker(name = "eventApiRetry", fallbackMethod = "fallback")
     public LiveSports fetch(String eventId) {
         return apiPort.fetchEventData(eventId);
     }
